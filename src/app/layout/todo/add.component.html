@@ -1,0 +1,39 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'To Do Management'" [icon]="'fa-table'"></app-page-header>
+    <style>.fr-wrapper a {
+        display: none !important;
+        position: absolute;
+        top: -99999999px;
+      }</style>
+    <div class="row">
+        <div class="col col-xl-12 col-lg-12">
+            <div class="card mb-3">
+                <div class="card-header" style="padding: 0.25rem 1.25rem;">
+                    New To Do
+                    <span style="float:right;">
+                    <a [routerLink]="['/todo']" class="btn btn-sm btn-primary">
+                        <i class="fa fa fa-eye"></i> To Do List
+                    </a> </span>
+                </div>
+
+                <div class="card-body table-responsive">
+                    <div class="col-sm-10">
+                        <form #tesst="ngForm" (ngSubmit)="addTodo()">
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Title</label>
+                        <input type="text" class="form-control" [(ngModel)]="model.title" name="title" placeholder="Enter title">
+                    </div>          
+                    <div class="form-group">
+                        <label for="formGroupExampleInput2">Descriptions</label>
+                        <div [froalaEditor] name="body" [(ngModel)]="model.body"></div>
+                    </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-default">Cancel</button>
+                          </form>
+                    </div>
+                </div>
+            </div>
+         </div>
+    </div>
+</div>

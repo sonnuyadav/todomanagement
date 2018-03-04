@@ -1,0 +1,24 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Attachments'" [icon]="'fa-table'"></app-page-header>
+    <div class="row">
+        <div class="col col-xl-12 col-lg-12">
+            <div class="card mb-3">
+                <div class="card-header" style="padding: 0.25rem 1.25rem;">
+                    Attachments Management
+                    <span style="float:right;">
+                    <a [routerLink]="['/attachments/add']" class="btn btn-sm btn-primary">
+                        <i class="fa fa fa-envelope"></i> Add Attachment
+                    </a> </span>
+                </div>
+                <div class="card-body table-responsive">
+                   <div class="img-wrap" *ngFor="let item of compData;let i = index">
+                        <span class="close" (click)="delete(item.id)">&times;</span>
+                        <img src="{{item.filepath}}" data-id="{{item.id}}">
+                    </div>
+                    <br>
+
+                </div>
+            </div>
+         </div>
+    </div>
+</div>

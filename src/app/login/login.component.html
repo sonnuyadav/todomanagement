@@ -1,0 +1,28 @@
+<div class="login-page" [@routerTransition]>
+    <div class="row justify-content-md-center">
+        <div class="col-md-4">
+            <img src="assets/images/logo-login.png" width="150px" class="user-avatar" />
+            <h3>ToDo Management System</h3>
+            <div *ngIf="cons.SUCCESS_MSG" class="alert alert-success">
+                {{cons.SUCCESS_MSG}}
+            </div>
+            <div  *ngIf="cons.ERROR_MSG" class="alert alert-danger">
+                {{cons.ERROR_MSG}}
+            </div>
+            <form #tesst="ngForm" (ng-submit)="onLoggedin()" role="form">
+                <div class="form-content">
+                    <div class="form-group">
+                        <input type="text" name="username" [(ngModel)]="Auth.user.username" class="form-control input-underline input-lg" id="" placeholder="Email">
+                    </div>
+
+                    <div class="form-group">
+                        <input name="password" [(ngModel)]="Auth.user.password" type="password" class="form-control input-underline input-lg" id="" placeholder="Password">
+                    </div>
+                </div>
+                <a class="btn rounded-btn" (click)="onLoggedin()"> Log in </a>&nbsp; 
+                Or <a class="btn rounded-btn" [routerLink]="['/signup']"> Register </a>
+               
+            </form>
+        </div>
+    </div>
+</div>

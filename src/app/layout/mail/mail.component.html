@@ -1,0 +1,53 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Mail Management List'" [icon]="'fa-table'"></app-page-header>
+    <div *ngIf="cons.SUCCESS_MSG" class="alert alert-success">
+        {{cons.SUCCESS_MSG}}
+    </div>
+    <div class="row">
+        <div class="col col-xl-12 col-lg-12">
+            <div class="card mb-3">
+                <div class="card-header" style="padding: 0.25rem 1.25rem;">
+                    Mail Management
+                    <span style="float:right;">
+                    <a [routerLink]="['/mail/composemail']" class="btn btn-sm btn-primary">
+                        <i class="fa fa fa-envelope"></i> Compose Mail
+                    </a> </span>
+                </div>
+                <div class="card-body table-responsive">
+                   <div id="example_filter" class="dataTables_filter">
+                     <label>Search: <input type="text" name="search" placeholder="Enter keyword" aria-controls="example" [(ngModel)]="filter">
+                     </label>
+                   </div>
+                    <table class="table">
+                      <thead>
+                       <tr>
+                             <th>#</th>
+                            <th>Name </th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Size of project</th>
+                            <th>Company</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                        </tr> 
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let item of compData | filter:filter | paginate: { itemsPerPage: 20, currentPage: p }; let i = index">
+                            <td scope="row">{{i+1}}</td>
+                            <td>{{item.name}}</td>
+                            <td>{{item.email}}</td>
+                            <td>{{item.phone}}</td>
+                            <td>{{item.size}}</td>
+                            <td>{{item.companyName}}</td>
+                            <td> {{item.doe | date:'dd-MM-yyyy'}}</td>
+                            <td>{{item.status}}</td>
+                        </tr>
+                        </tbody>
+                        
+                    </table>
+                    <div class="page"><pagination-controls (pageChange)="p = $event"></pagination-controls></div>
+                </div>
+            </div>
+         </div>
+    </div>
+</div>

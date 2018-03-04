@@ -1,0 +1,5 @@
+{
+    "MONGO":"mongodb://localhost:27017/todo",
+    "PORT": 8000,
+    "SECRET": "D3V3L0PM3NT"
+}

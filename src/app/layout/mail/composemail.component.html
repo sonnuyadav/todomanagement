@@ -1,0 +1,76 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'Mail Management'" [icon]="'fa-table'"></app-page-header>
+    <style>.fr-wrapper a {
+        display: none !important;
+        position: absolute;
+        top: -99999999px;
+      }</style>
+    <div class="row">
+        <div class="col col-xl-12 col-lg-12">
+            <div class="card mb-3">
+                <div class="card-header" style="padding: 0.25rem 1.25rem;">
+                    New Compose
+                    <span style="float:right;">
+                    <a [routerLink]="['/mail']" class="btn btn-sm btn-primary">
+                        <i class="fa fa fa-eye"></i> Mail List
+                    </a> </span>
+                </div>
+
+                <div class="card-body table-responsive">
+                    <div class="col-sm-10">
+                        <form #tesst="ngForm" (ngSubmit)="addMail()">
+                            <div class="form-group">
+                              <label for="formGroupExampleInput">Name</label>
+                              <input type="text" class="form-control" [(ngModel)]="model.name" name="name" placeholder="Enter name">
+                            </div>
+                            <div class="form-group">
+                              <label for="formGroupExampleInput2">Email Id</label>
+                              <input type="text" class="form-control" [(ngModel)]="model.email" name="email" placeholder="Enter email id">
+                            </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Phone</label>
+                    <input type="text" class="form-control" [(ngModel)]="model.phone" name="phone" placeholder="Enter phone">
+               </div>
+               <div class="form-group">
+                <label for="formGroupExampleInput2">Project Size</label>
+                <input type="text" class="form-control" [(ngModel)]="model.size" name="projectsize" placeholder="Enter project size">
+               </div>
+
+               <div class="form-group">
+                <label for="formGroupExampleInput2">Mail Subject</label>
+                <input type="text" class="form-control" [(ngModel)]="model.subject" name="subject" placeholder="Enter subject">
+               </div>
+
+               <div class="form-group">
+                <label for="formGroupExampleInput2">Body</label>
+                <div [froalaEditor] name="body" [(ngModel)]="model.body">Hello, Froala!</div>
+              
+                <!-- <textarea class="form-control" name="body" [(ngModel)]="model.body"></textarea> -->
+               </div>
+
+           <div class="form-group">
+            <label for="formGroupExampleInput2">Company</label>
+            <select class="form-control" name="company" [(ngModel)]="model.company">
+                <option value="0">Select option</option>
+                <option *ngFor="let company of compData" value="{{company.id}}" >{{company.name}}</option>
+            </select>
+           </div>
+        
+           <div class="form-group form-row">
+            <div class="col" *ngFor="let item of attachData;let i = index">
+                <label for="formGroupExampleInput2">
+                    <input type="checkbox" name="attachment[]" value="{{item.id}}" (change)="onClicked(item.id, $event)"></label>
+                <img src="{{item.filepath}}">
+           </div>
+   
+          </div> 
+
+        <button type="submit" class="btn btn-primary">Send mail</button>
+        <button type="reset" class="btn btn-default">Cancel</button>
+                          </form>
+                    </div>
+                </div>
+            </div>
+         </div>
+    </div>
+</div>
