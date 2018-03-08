@@ -11,7 +11,7 @@ export class TodoService {
   options;
 
   addTodo(info){
-    console.log(info)
+    //console.log(info)
    //let url = this.ConstantService.API_ENDPOINT+'composeMail.php';
    let url = 'http://localhost:8000/createTodo';
     return this._http.post(url,info)

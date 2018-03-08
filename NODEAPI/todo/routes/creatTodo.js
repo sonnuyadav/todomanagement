@@ -1,6 +1,7 @@
 var dbTask = require('../models/todo')
 exports.createTodo = (req,res,next)=>{
- if(!req.body.descriptions){
+    console.log(req.body)
+ if(!req.body.title){
         res.json({
             success: false,
             msg: "Please provide all details"

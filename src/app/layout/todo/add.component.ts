@@ -48,11 +48,7 @@ onClicked(option, event) {
 }
  
 addTodo(){
-let attachData  = this.chkArray;
-let data=[];
-data.push(attachData);
-data.push(this.model);
-this.todoService.addTodo(data).subscribe((res) => {
+this.todoService.addTodo(this.model).subscribe((res) => {
     if(res.status =='true'){
           setTimeout(() => {     
             this.cons.setAlert('Lead added successfully', 1);         
